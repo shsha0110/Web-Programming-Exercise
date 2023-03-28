@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My first web page</title>
+    <script>
+        function printPyramid(n) {
+        var pyramid = "";
+        for (var i = 1; i <= n; i++) {
+            // 공백 문자열 추가
+            for (var j = 1; j <= n - i; j++) {
+            pyramid += " ";
+            }
+            // 별표 문자열 추가
+            for (var k = 1; k <= 2*i - 1; k++) {
+            pyramid += "*";
+            }
+            // 개행 문자 추가
+            pyramid += "\n";
+        }
+        console.log(pyramid);
+    }
+    </script>
+    <style>
+        body {
+            height: 100%;
+        }
+        body {
+          background-image: url(https://cdn.pixabay.com/photo/2017/03/28/22/55/night-photograph-2183637_960_720.jpg);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      </style>
+</head>
+<body>
+    <h1 id="tile">My First Web Page</h1>
+    <p>My first paragraph</p>
+    <button onClick="printPyramid(5)">Click me</button>
+    <p><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+</body>
+</html>
