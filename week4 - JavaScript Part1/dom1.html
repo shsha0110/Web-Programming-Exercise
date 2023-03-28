@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Sample</title>
+    <script>
+      window.onload = function () {
+        // DOM 조작하기
+        let statusNum = 1;
+        const myParagraph = document.getElementById("my-paragraph");
+
+        myParagraph.innerHTML = "This is a new paragraph.";
+        myParagraph.style.color = "red";
+
+        // 이벤트 처리 방법
+        const addButton = document.getElementById("add-button");
+
+        addButton.addEventListener("click", function () {
+          const actionStatus = document.getElementById("action-status");
+
+          // 이름을 입력받는 폼 추가
+          const nameInput = document.createElement("input");
+          nameInput.setAttribute("type", "text");
+          nameInput.setAttribute("placeholder", "Enter your name");
+          actionStatus.appendChild(nameInput);
+
+          // 상태를 추가하는 버튼 추가
+          const addStatusButton = document.createElement("button");
+          addStatusButton.innerHTML = "Add";
+          actionStatus.appendChild(addStatusButton);
+
+          // 상태를 추가하는 함수
+          const addStatus = function() {
+            const name = nameInput.value;
+            if (name.trim() === '') {
+              return;
+            }
+            let clickStatus = document.createElement("div");
+            clickStatus.setAttribute("class", "status");
+            clickStatus.innerHTML = `${statusNum}번째 : ${name} clicked the button!`;
+            statusNum++;
+            actionStatus.insertBefore(clickStatus, nameInput);
+            // 입력 폼과 버튼 삭제
+            nameInput.remove();
+            addStatusButton.remove();
+          }
+
+          // "Add" 버튼 클릭 시 상태를 추가하고 입력 폼과 버튼 삭제
+          addStatusButton.addEventListener("click", addStatus);
+
+          // 엔터 키를 눌렀을 때도 상태를 추가하고 입력 폼과 버튼 삭제
+          nameInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+              addStatus();
+            }
+          });
+
+        });
+
+        const delButton = document.getElementById("del-button");
+
+        delButton.addEventListener("click", function () {
+          const status = document.getElementsByClassName("status");
+          status[status.length - 1].remove();
+          statusNum--;
+        });
+
+        const clearButton = document.getElementById("clear-button");
+
+        clearButton.addEventListener("click", function() {
+            const status = document.getElementsByClassName("status");
+            while (status.length > 0) {
+                status[status.length - 1].remove();
+                statusNum--;
+            }
+        });
+
+      };
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Sample</h1>
+
+    <p id="my-paragraph">This is a sample paragraph.</p>
+    <button id="add-button">Add Status</button>
+    <button id="del-button">Delete Status</button>
+    <button id="clear-button">Clear Statuses</button>
+    <p id="action-status">Action Status:</p>
+  </body>
+</html>
