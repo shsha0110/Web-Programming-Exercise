@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guest Book</title>
+</head>
+<body>
+
+	<h1>Guest Book</h1>
+	<p>Please answer the following questions:</p>
+
+	<form id="survey-form">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br>
+
+		<label for="age">Age:</label>
+		<input type="number" id="age" name="age"><br>
+
+		<label for="gender">Gender:</label>
+		<input type="radio" id="male" name="gender" value="male">
+		<label for="male">Male</label>
+		<input type="radio" id="female" name="gender" value="female">
+		<label for="female">Female</label>
+		<input type="radio" id="conceal" name="gender" value="conceal">
+		<label for="conceal">Conceal</label><br>
+
+        <label for="mbti"><a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC" target="_blank">MBTI:</a></label><br>
+        <select id="mbti" name="mbti">
+            <option value="">Select your MBTI type</option>
+            <option value="ISTJ">ISTJ</option>
+            <option value="ISFJ">ISFJ</option>
+            <option value="INFJ">INFJ</option>
+            <option value="INTJ">INTJ</option>
+            <option value="ISTP">ISTP</option>
+            <option value="ISFP">ISFP</option>
+            <option value="INFP">INFP</option>
+            <option value="INTP">INTP</option>
+            <option value="ESTP">ESTP</option>
+            <option value="ESFP">ESFP</option>
+            <option value="ENFP">ENFP</option>
+            <option value="ENTP">ENTP</option>
+            <option value="ESTJ">ESTJ</option>
+            <option value="ESFJ">ESFJ</option>
+            <option value="ENFJ">ENFJ</option>
+            <option value="ENTJ">ENTJ</option>
+        </select><br>
+
+		<label for="comments">Comments:</label>
+		<textarea id="comments" name="comments"></textarea><br>
+
+		<button type="submit">Submit</button>
+	</form>
+
+	<table id="responses">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>MBTI Type</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script>
+        document.getElementById("survey-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get the form data
+        var formData = new FormData(event.target);
+
+        // Create table row and cells
+        var table = document.getElementById("responses");
+        var row = table.insertRow(-1);
+        var nameCell = row.insertCell(0);
+        var ageCell = row.insertCell(1);
+        var genderCell = row.insertCell(2);
+        var mbtiCell = row.insertCell(3);
+        var commentsCell = row.insertCell(4);
+
+        // Get form values and add them to the table cells
+        var name = formData.get("name");
+        var age = formData.get("age");
+        var gender = formData.get("gender");
+
+        var mbti = formData.get("mbti")
+        // var mbtiInputs = document.querySelectorAll('input[id="mbti"]');
+        // var mbtiValue = "";
+        // for (var i = 0; i < mbtiInputs.length; i++) {
+        //     if (mbtiInputs[i].checked) {
+        //         mbtiValue = mbtiInputs[i].value;
+        //         break;
+        //     }
+        // }
+
+        var comments = formData.get("comments");
+
+        nameCell.innerHTML = name;
+        ageCell.innerHTML = age;
+        genderCell.innerHTML = gender;
+        mbtiCell.innerHTML = mbti;
+        commentsCell.innerHTML = comments;
+
+        // Show a message to the user
+        alert("Thanks for taking the survey!");
+
+        // Reset the form
+        event.target.reset();
+    });
+    </script>
+ 
+</body>
