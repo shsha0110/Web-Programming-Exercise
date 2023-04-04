@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
   </head>
   <body>
     <h1>To-Do List</h1>
     <h2>
-      Personal Mode
-      <button id="personalMode" onclick="location.href='index2.html'">change mode</button> 
+      Team Mode
+      <button id="personalMode" onclick="location.href='index.html'">change mode</button> 
     </h2>
     <form>
+      <input type="text" id="manager" placeholder="담당자" /> 
       <input type="text" id="title" placeholder="할일" />
       <input type="date" id="dueDate" placeholder="마감일" />
       <button id="addBtn">추가</button>
@@ -19,7 +20,7 @@
 
     <ul id="todoList"></ul>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="app2.js"></script>
     
   </body>
 </html>
