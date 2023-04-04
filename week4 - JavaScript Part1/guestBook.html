@@ -56,7 +56,7 @@
 				<th>Name</th>
 				<th>Age</th>
 				<th>Gender</th>
-				<th>MBTI Type</th>
+				<th>MBTI</th>
 				<th>Comments</th>
 			</tr>
 		</thead>
@@ -84,17 +84,7 @@
         var name = formData.get("name");
         var age = formData.get("age");
         var gender = formData.get("gender");
-
         var mbti = formData.get("mbti")
-        // var mbtiInputs = document.querySelectorAll('input[id="mbti"]');
-        // var mbtiValue = "";
-        // for (var i = 0; i < mbtiInputs.length; i++) {
-        //     if (mbtiInputs[i].checked) {
-        //         mbtiValue = mbtiInputs[i].value;
-        //         break;
-        //     }
-        // }
-
         var comments = formData.get("comments");
 
         nameCell.innerHTML = name;
@@ -104,7 +94,7 @@
         commentsCell.innerHTML = comments;
 
         // Show a message to the user
-        alert("Thanks for taking the survey!");
+        alert("Thanks for your response!");
 
         // Reset the form
         event.target.reset();
